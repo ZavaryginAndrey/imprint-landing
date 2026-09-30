@@ -235,6 +235,13 @@ h2{font:900 clamp(36px,4.4vw,58px)/1.05 var(--f-disp);letter-spacing:-.02em;marg
 @keyframes fadein{from{opacity:0}}
 .pop .h{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--a-muted);margin:10px 4px 6px}
 .pop .h:first-child{margin-top:2px}
+.st-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 2px}
+.st-head .h{margin:2px 4px 6px}
+.ai{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px 0 7px;border-radius:999px;background:var(--a-soft);color:var(--a-ink);font:700 11.5px/1 var(--f-ui);letter-spacing:.3px;border:1px solid color-mix(in srgb,var(--a-amber) 45%,transparent);cursor:default;transition:border-color .2s}
+.ai .i{font-size:13px;color:var(--a-amber-text)}
+.ai:hover,.ai:focus-visible{border-color:var(--a-amber)}
+.ai-tip{position:absolute;top:calc(100% + 4px);right:0;z-index:2;width:210px;padding:9px 12px;border-radius:12px;background:#1E2749;color:#EAECF5;font-size:12.5px;line-height:1.4;box-shadow:0 12px 28px -12px rgb(20 26 50 / .5);opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .18s,transform .18s cubic-bezier(.16,1,.3,1)}
+.ai:hover+.ai-tip,.ai:focus+.ai-tip{opacity:1;transform:none}
 .pop hr{border:0;border-top:1px solid var(--a-hair);margin:4px 6px}
 .opt{display:flex;gap:10px;align-items:center;padding:7px 10px;border-radius:8px;width:100%;text-align:left}
 .opt:hover{background:color-mix(in srgb,var(--a-ink) 6%,var(--a-surf))}
@@ -469,7 +476,15 @@ button.ov-ext:active{transform:scale(.92)}
 .cell-c .days button{height:38px;font-size:13px;background:color-mix(in srgb,var(--a-field) 70%,transparent)}
 .cell-c .days button.on{background:var(--a-ink)}
 .c-note{font:italic 700 18px/1.35 var(--f-disp);color:var(--a-amber-text);margin:12px 0 0}
-@media (max-width:880px){.bento{grid-template-columns:1fr}.cell-a{grid-row:auto}}
+/* AI on a stuck task: a static preview, the button in the steps window is a stub too */
+.cell-d{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,4vw,48px);align-items:center;background:linear-gradient(135deg,var(--a-soft),var(--a-bg) 62%);color:var(--a-ink)}
+.cell-d p{color:var(--a-text)}
+.d-ai .row{margin:0}
+.d-ai .tag{margin-right:4px}
+.d-steps{margin:8px 0 0 24px;padding:10px 12px 8px;background:var(--a-surf);border:1px solid var(--a-hair);border-radius:12px;font-size:13.5px}
+.d-h{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--a-muted);margin:0 4px 4px}
+.d-h .i{font-size:14px;color:var(--a-amber-text)}
+@media (max-width:880px){.bento{grid-template-columns:1fr}.cell-a{grid-row:auto}.cell-d{grid-template-columns:1fr}}
 @media (max-width:520px){.b-ed{grid-template-columns:1fr}.icons{grid-template-columns:repeat(8,minmax(0,1fr))}}
 
 /* ---------- history block (the one switch into the navy Meta world) ---------- */
@@ -568,6 +583,7 @@ footer .sp{flex:1}
 <symbol id="r-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
 <symbol id="r-palette" viewBox="0 0 256 256"><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"/></symbol>
 <symbol id="r-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="r-sparkle" viewBox="0 0 256 256"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></symbol>
 <symbol id="r-fast-forward" viewBox="0 0 256 256"><path d="M248.67,114.66,160.48,58.5A15.91,15.91,0,0,0,136,71.84v37.3L56.48,58.5A15.91,15.91,0,0,0,32,71.84V184.16A15.92,15.92,0,0,0,56.48,197.5L136,146.86v37.3a15.92,15.92,0,0,0,24.48,13.34l88.19-56.16a15.8,15.8,0,0,0,0-26.68ZM48,183.94V72.07L135.82,128Zm104,0V72.07L239.82,128Z"/></symbol>
 <symbol id="r-cursor-click" viewBox="0 0 256 256"><path d="M88,24V16a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0ZM16,104h8a8,8,0,0,0,0-16H16a8,8,0,0,0,0,16ZM124.42,39.16a8,8,0,0,0,10.74-3.58l8-16a8,8,0,0,0-14.31-7.16l-8,16A8,8,0,0,0,124.42,39.16Zm-96,81.69-16,8a8,8,0,0,0,7.16,14.31l16-8a8,8,0,1,0-7.16-14.31ZM219.31,184a16,16,0,0,1,0,22.63l-12.68,12.68a16,16,0,0,1-22.63,0L132.7,168,115,214.09c0,.1-.08.21-.13.32a15.83,15.83,0,0,1-14.6,9.59l-.79,0a15.83,15.83,0,0,1-14.41-11L32.8,52.92A16,16,0,0,1,52.92,32.8L213,85.07a16,16,0,0,1,1.41,29.8l-.32.13L168,132.69ZM208,195.31,156.69,144h0a16,16,0,0,1,4.93-26l.32-.14,45.95-17.64L48,48l52.2,159.86,17.65-46c0-.11.08-.22.13-.33a16,16,0,0,1,11.69-9.34,16.72,16.72,0,0,1,3-.28,16,16,0,0,1,11.3,4.69L195.31,208Z"/></symbol>
 <symbol id="f-house" viewBox="0 0 256 256"><path d="M224,120v96a8,8,0,0,1-8,8H160a8,8,0,0,1-8-8V164a4,4,0,0,0-4-4H108a4,4,0,0,0-4,4v52a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V120a16,16,0,0,1,4.69-11.31l80-80a16,16,0,0,1,22.62,0l80,80A16,16,0,0,1,224,120Z"/></symbol>
@@ -777,6 +793,22 @@ footer .sp{flex:1}
             <p class="c-note" id="c-note"></p>
           </div>
         </div>
+        <div class="cell cell-d reveal">
+          <div>
+            <h3>Зависшая задача разобьётся на шаги</h3>
+            <p>Задача неделями переезжает с дня на день? AI разобьёт её на маленькие шаги по названию и группе. Нелюбимое дело или большой кусок работы проще начать с первого шага, чем снова отложить.</p>
+          </div>
+          <div class="app d-ai" role="img" aria-label="Пример: задача «Разобрать балкон» и четыре шага, которые предложил AI">
+            <div class="row"><div class="line"><span class="c"></span><span class="t">Разобрать балкон</span><span class="tag"><svg class="i" aria-hidden="true" style="color:#E0A34A"><use href="#f-house"/></svg>Дом</span><span class="date">лежит 3 недели</span></div></div>
+            <div class="d-steps">
+              <div class="d-h"><svg class="i" aria-hidden="true"><use href="#r-sparkle"/></svg>Шаги от AI</div>
+              <div class="step"><span class="c"></span><span>Вынести коробки в коридор</span></div>
+              <div class="step"><span class="c"></span><span>Разложить: оставить, отдать, выбросить</span></div>
+              <div class="step"><span class="c"></span><span>Отвезти ненужное в пункт приёма</span></div>
+              <div class="step"><span class="c"></span><span>Протереть полки и вернуть нужное</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -788,6 +820,7 @@ footer .sp{flex:1}
         <h2>История без оценок</h2>
         <p class="acc-l">…как идут дела</p>
         <p>Сколько сделано сегодня и за неделю. Без процентов, стрелок вниз и серий, которые страшно прервать.</p>
+        <p>По этой же динамике Imprint решает, как часто показывать оверлей. Дела закрываются и без подсказок? Оверлей появляется реже: список вы уже помните и держите под контролем сами.</p>
       </div>
       <div class="hist-page meta" id="p-hist"></div>
       <p class="h-note">Цифры для примера. Отметьте задачу на странице, и сегодняшний столбик подрастёт.</p>
@@ -816,6 +849,7 @@ footer .sp{flex:1}
       <div class="final-task app"><div class="row" id="final-task"><div class="line"><button class="c" aria-label="Отметить: дочитать про Imprint"></button><span class="t">Дочитать про Imprint</span></div></div></div>
       <h2>Imprint работает, когда вы из него уходите.</h2>
       <p class="acc-l">…записали, отметили, живём дальше</p>
+      <p class="lede">Уходите вы не из приложения, а от постоянных напоминаний о планах. Оверлей появляется всё реже, и список дел вы держите в голове сами.</p>
       <a class="btn btn-primary" href="https://imprint.web.app" target="_blank" rel="noopener">Открыть Imprint<svg class="i" aria-hidden="true"><use href="#r-arrow-right"/></svg></a>
     </div>
   </section>
@@ -1443,7 +1477,8 @@ function syncStepsDone(t) {
   else if (!all && t.done) t.done = false;
 }
 function openSteps(root, anchor, t) {
-  const html = (tk = -1) => `<div class="h">Шаги</div>` + (t.steps.length ? t.steps.map((s, i) => `<div class="step${s.done ? ' d' : ''}"><button class="c${i === tk ? ' tick' : ''}" data-s="${i}" aria-label="Шаг ${i + 1}"></button><span>${esc(s.t)}</span></div>`).join('') : '<div style="color:var(--a-muted);padding:2px 4px">Разбейте задачу на маленькие шаги.</div>') + `<input class="add-step" placeholder="Новый шаг и Enter" aria-label="Новый шаг">`;
+  // AI is a preview on the landing: the button explains itself on hover or focus and does nothing on click
+  const html = (tk = -1) => `<div class="st-head"><div class="h">Шаги</div><button class="ai" type="button" aria-describedby="ai-tip">${ic('sparkle')}AI</button><div class="ai-tip" id="ai-tip" role="tooltip">AI сам подберёт шаги по сложности задачи, опираясь на её название и группу.</div></div>` + (t.steps.length ? t.steps.map((s, i) => `<div class="step${s.done ? ' d' : ''}"><button class="c${i === tk ? ' tick' : ''}" data-s="${i}" aria-label="Шаг ${i + 1}"></button><span>${esc(s.t)}</span></div>`).join('') : '<div style="color:var(--a-muted);padding:2px 4px">Разбейте задачу на маленькие шаги.</div>') + `<input class="add-step" placeholder="Новый шаг и Enter" aria-label="Новый шаг">`;
   const el = openPop(root, anchor, html(), { width: 260 });
   heldId = t.id;
   const focus = () => { const i = $('.add-step', el); if (i && root !== phone) i.focus({ preventScroll: true }); };
